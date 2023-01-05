@@ -134,11 +134,7 @@ async function connectionUpdate(update) {
     global.timestamp.connect = new Date
   }
   if (global.db.data == null) loadDatabase()
-  if (connection == 'open') {
-console.log(chalk.yellow('Successfully connected by ' + author))
-}
-  console.log(JSON.stringify(update, null, 4))
-  if (update.receivedPendingNotifications) return this.sendMessage(nomorown + '@s.whatsapp.net', { text: 'Bot Successfully Connected' })
+  if (connection == 'open') { console.log(chalk.yellow('Successfully ' + author)) }
 }
 
 process.on('uncaughtException', console.error)
