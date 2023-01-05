@@ -1,99 +1,22 @@
-import fetch from 'node-fetch'
-import { promises, readFileSync } from 'fs'
-import { join } from 'path'
-import { xpRange } from '../lib/levelling.js'
+/* Recode Wudysoft */
+
+import fetch from "node-fetch"
+import { promises, readFileSync } from "fs"
+import { join } from "path"
+import { xpRange } from "../lib/levelling.js"
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
-let imgr = flaaa.getRandom()
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
-    let { exp, limit, level, role, money, lastclaim, lastweekly, registered, regTime, age, banned, pasangan } = global.db.data.users[who]
-    let { min, xp, max } = xpRange(level, global.multiplier)
-    let name = await conn.getName(who)
-        if (typeof global.db.data.users[who] == "undefined") {
-      global.db.data.users[who] = {
-        exp: 0,
-        limit: 10,
-        lastclaim: 0,
-        registered: false,
-        name: conn.getName(m.sender),
-        age: -1,
-        regTime: -1,
-        afk: -1,
-        afkReason: '',
-        banned: false,
-        level: 0,
-        lastweekly: 0,
-        role: 'Warrior V',
-        autolevelup: false,
-        money: 0,
-        pasangan: "",
-      }
-     }
-     let math = max - xp
-     let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
-     let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
-     let cap = `*${htki} Information ${htka}*
-
-*🏷️ Nama:* ${name}
-*💲 Money:* *RP* ${money}
-*🏆 Level* ${level}
-*🎋 Role:* ${role}
-*🧬 XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
-*📨 Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}\n\n Ketik *${usedPrefix}inv* untuk melihat Inventory RPG
-${cmenua}`
-
-let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
-    let pusat = ["ke1", "ke2", "ke3", "ke4", "ke5", "ke6", "ke7", "ke8"]
-let pilih = pusat.getRandom()
-if (pilih == "ke1") {
-	await conn.send2ButtonDoc(m.chat, cap, weem, emojis + ' All Menu', usedPrefix + 'allmenu', emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
+await conn.sendMessage(m.chat, {
+          react: {
+            text: "⏳",
+            key: m.key,
+          }})
+     let cap = "*ʙᴏᴛ ʙᴜɪʟᴅ-ᴏᴘᴇʀᴀᴛᴇ-ᴛʀᴀɴsғᴇʀ* _ᴀᴅᴀʟᴀʜ ᴘʀᴏɢʀᴀᴍ ᴋᴏᴍᴘᴜᴛᴇʀ ʏᴀɴɢ ᴅɪᴊᴀʟᴀɴᴋᴀɴ ᴅɪ ᴡʜᴀᴛsᴀᴘᴘ ʏᴀɴɢ ᴋʜᴜsᴜs ᴅɪʙᴜᴀᴛ ᴜɴᴛᴜᴋ ᴍᴇʟᴀᴋᴜᴋᴀɴ ᴘᴇᴋᴇʀᴊᴀᴀɴ-ᴘᴇᴋᴇʀᴊᴀᴀɴ ᴏᴛᴏᴍᴀᴛɪs, ʙᴏᴛ ᴡʜᴀᴛsᴀᴘᴘ ᴅɪʀᴀɴᴄᴀɴɢ sᴇᴅᴇᴍɪᴋɪᴀɴ ʀᴜᴘᴀ sᴇʜɪɴɢɢᴀ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ɴʏᴀᴍᴀɴ, ᴅᴀɴ ᴋᴇᴍᴜɴɢᴋɪɴᴀɴ ᴍᴇᴍɪʟɪᴋɪ sᴇᴅɪᴋɪᴛ ʙᴜɢ, ᴀᴅᴀɴʏᴀ ғɪᴛᴜʀ ᴅᴀʀɪ ʙᴏᴛ ᴡʜᴀᴛsᴀᴘᴘ ɪɴɪ ᴛᴇɴᴛᴜ ᴀᴋᴀɴ ᴍᴇᴍʙᴀɴᴛᴜ ᴀɴᴅᴀ ᴜɴᴛᴜᴋ ʙᴇʀsᴇɴᴀɴɢ sᴇɴᴀɴɢ, ᴅʟʟ_\n"
+     let pp = "https://cerdasin.netlify.app/img/thumbnail1.jpg"
+	await conn.send2ButtonLoc(m.chat, pp, cap, author, emojis + " All Menu", usedPrefix + "allmenu", emojis + " List Menu", usedPrefix + "menulist", m, adReply)
 }
-if (pilih == "ke2") {
-	await conn.send2ButtonLoc(m.chat, knimg, cap, weem, emojis + ' All Menu', usedPrefix + 'allmenu', emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
-}
-if (pilih == "ke3") {
-	await conn.send2ButtonImg(m.chat, knimg, cap, weem, emojis + ' All Menu', usedPrefix + 'allmenu', emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
-}
-if (pilih == "ke4") {
-	await conn.send2ButtonVid(m.chat, knimg, cap, weem, emojis + ' All Menu', usedPrefix + 'allmenu', emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
-}
-if (pilih == "ke5") {
-	await conn.sendTemplateButtonDoc(m.chat, knimg, cap, weem, emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
-}
-if (pilih == "ke6") {
-	await conn.sendTemplateButtonLoc(m.chat, knimg, cap, weem, emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
-}
-if (pilih == "ke7") {
-	await conn.send2TemplateButtonFakeImg(m.chat, knimg, cap, weem, emojis + ' All Menu', usedPrefix + 'allmenu', emojis + ' List Menu', usedPrefix + 'menulist', fakes, fakefb)
-}
-if (pilih == "ke8") {
-	let btn = [{
-		urlButton: {
-			displayText: 'Chat Owner',
-			url: 'https://wa.me/' + nomorown
-		}
-	}, {
-		quickReplyButton: {
-			displayText: emojis + ' All Menu',
-			id: usedPrefix + 'allmenu'
-		}
-	}, {
-		quickReplyButton: {
-			displayText: emojis + ' List Menu',
-			id: usedPrefix + 'menulist'
-		}
-	}]
-	await conn.sendButtonGif(m.chat, cap, wm, {
-		url: global.giflogo
-	}, btn, knimg)
-}
-// Sound
-await conn.sendFile(m.chat, 'https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/bot.mp3', '', '', m)
-
-}
-handler.help = ['menu', 'help', '?']
-handler.tags = ['main']
+handler.help = ["menu", "help", "?"]
+handler.tags = ["main"]
 handler.command = /^(menu|help|\?)$/i
 
 export default handler

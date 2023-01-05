@@ -10,14 +10,14 @@ let chara = await genshin.characters(text.toLowerCase())
 let { name, quote, cv, description, image, city, element, weapon, rating } = chara
 
 let capt = `
-*Name:* ${name}
-*CV:* ${cv}
-*City:* ${city}
-*Element:* ${element}
-*Weapon:* ${weapon}
-*Rating:* ${rating}
-*Quote:* ${quote}
-*Description:*
+👤 *Name:* ${name}
+🌏 *CV:* ${cv}
+🏢 *City:* ${city}
+♨️ *Element:* ${element}
+📛 *Weapon:* ${weapon}
+⭐ *Rating:* ${rating}
+📝 *Quote:* ${quote}
+📮 *Description:*
 ${description}
 `.trim()
 
@@ -27,4 +27,5 @@ await conn.sendFile(m.chat, image, 'gi.jpg', capt, m)
 handler.help = ['charagi']
 handler.command = /^chara(gi|genshin)?$/i
 handler.tags = ['internet']
+handler.limit = true
 export default handler 

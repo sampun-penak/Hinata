@@ -116,7 +116,7 @@ let handler = async (m, { conn, isRowner}) => {
   await m.reply(`*ᴛ ᴇ s ᴛ ɪ ɴ ɢ . . .*`)
   let neww = performance.now()
   let speed = neww - old
-  await conn.reply(m.chat,`- *ᴘ ɪ ɴ ɢ* -
+  let str = `- *ᴘ ɪ ɴ ɢ* -
 ${Math.round(neww - old)}ms
 ${speed}ms
 
@@ -148,8 +148,8 @@ ${readMore}
 ${readMore}
 *${htjava} ɴᴏᴅᴇJS ᴍᴇᴍᴏʀʏ ᴜsᴀɢᴇ*
 ${'```' + Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v => v.length)), ' ')}: ${format(used[key])}`).join('\n') + '```'}
-
-`,m)
+`
+await conn.sendPayment(m.chat, `${Math.round(neww - old)}`, 'USD', str, m.sender, logo, m)
 }
 handler.help = ['ping', 'speed']
 handler.tags = ['info', 'tools']

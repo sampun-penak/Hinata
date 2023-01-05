@@ -1,38 +1,29 @@
-import fetch from 'node-fetch'
 import { youtubeSearch } from '@bochilteam/scraper'
-let handler = async (m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
-  if (!text) throw `Use example ${usedPrefix}${command} gustixa`
-  let ply = await youtubeSearch(text)
-  let vid = ply.video[0]
+let handler = async (m, { conn, command, text, usedPrefix }) => {
+  if (!text) throw `Use example ${usedPrefix}${command} Dj Gama Naufal`
+  let vid = (await youtubeSearch(text)).video[0]
   if (!vid) throw 'Video/Audio Tidak ditemukan'
   let { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid
   const url = 'https://www.youtube.com/watch?v=' + videoId
-  let des = `*YOUTUBE DOWNLOADER*
-📌 *Title:* ${title}
-🔗 *Url:* ${url}
-🖹 *Description:* ${description}
-⏲️ *Published:* ${publishedTime}
-⌚ *Duration:* ${durationH}
+  await conn.sendHydrated(m.chat, `
+*${htki} PLAY ${htka}*
+
+${htjava} *Title:* ${title}
+📤 *Published:* ${publishedTime}
+⏰ *Duration:* ${durationH}
 👁️ *Views:* ${viewH}
-  `.trim()
-  await conn.sendButton(m.chat, des, wm, thumbnail, [
-   ['Audio 🎧', `${usedPrefix}yta ${url} yes`],
-   ['Video 🎥', `${usedPrefix}ytv ${url} yes`]
-   ], m)
 
+🔗 *Url:* ${url}
+📔 *Description:* ${description}
+  `.trim(), wm, thumbnail, url, '📣 GO TO YOUTUBE', null, null, [
+    ['🎶 Audio', `${usedPrefix}yta ${url} yes`],
+    ['🎥 Video', `${usedPrefix}ytv ${url} yes`],
+    ['🔎 Youtube Search', `${usedPrefix}yts ${url}`]
+  ], m)
 }
-handler.help = ['play', 'play'].map(v => v + ' <pencarian>')
+handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
 handler.tags = ['downloader']
-handler.command = /^(y((outube|((utu|t)b|t))play|tp)|play(yt)?)$/i
-
-handler.exp = 0
-handler.limit = false
+handler.command = /^play2?$/i
+handler.limit = true
 
 export default handler
-
-async function shortUrl(url) {
-  url = encodeURIComponent(url)
-  let res = await fetch(`https://is.gd/create.php?format=simple&url=${url}`)
-  if (!res.ok) throw false
-  return await res.text()
-}
