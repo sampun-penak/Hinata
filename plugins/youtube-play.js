@@ -20,6 +20,7 @@ ${htjava} *Title:* ${title}
     ['🎥 Video', `${usedPrefix}ytv ${url} yes`],
     ['🔎 Youtube Search', `${usedPrefix}yts ${url}`]
   ], m)
+  throw 'Karena Anu nya :v\nHydrated Gak kliantan'
 }
 handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
 handler.tags = ['downloader']

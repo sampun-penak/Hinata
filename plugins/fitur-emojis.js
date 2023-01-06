@@ -1,9 +1,5 @@
 // ESM
-import emoji from 'emoji-api'
-import fetch from 'node-fetch'
-import { sticker } from '../lib/sticker.js'
-import { Sticker, StickerTypes } from 'wa-sticker-formatter'
-
+import { Emojis } from 'dhn-api'
 let handler = async (m, { conn, args, text, usedPrefix, command, isPrems }) => {
 let name = await conn.getName(m.sender)
 await conn.sendMessage(m.chat, {
@@ -12,10 +8,14 @@ await conn.sendMessage(m.chat, {
             key: m.key
           }})
           if (!args[0] || args[0].length > 2) throw 'Masukkan emoji tapi 1 aja ya :v'
-let mmo = await emoji.get(args[0]).twemoji()
-const stek = new Sticker(encodeURI(mmo), { pack: packname, author: author, type: StickerTypes.FULL })
-				const buffer = await stek.toBuffer()
-				conn.sendFile(m.chat, buffer, 'sticker.webp', '', fakes, adReply, { asSticker: true })
+          let cari = await Emojis(args[0])
+    let listSections = []
+	Object.values(cari.vendor_pack).map((v, index) => {
+	listSections.push([index + ' ' + cmenub + ' ' + cari.unicode_desc, [
+          [v.vendor_version, usedPrefix + 'fetchsticker ' + v.vendor_thumb.slice(86) + ' wsf', 'Url: ' + v.vendor_url]
+        ]])
+	})
+	return conn.sendList(m.chat, htki + ' 📺 Emojis 🔎 ' + htka, `${cari.unicode_desc}`, author, '☂️ Emojis Disini ☂️', listSections, m)
 }
 handler.help = ['emoji']
 handler.tags = ['sticker'] 

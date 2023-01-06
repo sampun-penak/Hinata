@@ -3,6 +3,7 @@ import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 import { sticker } from '../lib/sticker.js'
 import fs from "fs"
+import { Quotes, JalanTikusMeme } from 'dhn-api'
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -191,8 +192,17 @@ await conn.sendButton(m.chat, caption, wm, null, [
 }
 
 if (command == 'quotes') {
-let f = await fetch(`https://botstyle-api.herokuapp.com/api/quotes?apikey=OrM2HzZl`)
-let x = await f.json()
+let x = await Quotes()
+let caption = `${x.quotes}
+
+🤠 ${x.author}`
+await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], fakes, adReply)
+}
+
+if (command == 'jtmeme') {
+let x = await Quotes()
 let caption = `${x.quotes}
 
 🤠 ${x.author}`
@@ -405,7 +415,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'emojimix4', 'calc2', 'mvsearch', 'mvsearch2', 'lmaker', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly', 'jamdunia', 'gqr']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'emojimix4', 'calc2', 'mvsearch', 'mvsearch2', 'lmaker', 'truth2', 'dare2', 'quotes', 'jtmeme', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly', 'jamdunia', 'gqr']
 handler.tags = ['tools']
 
 export default handler

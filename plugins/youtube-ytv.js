@@ -45,7 +45,7 @@ try {
 *${htjava} Filesize:* ${video.fileSizeH}`, title + '.mp4', await(await fetch(link)).buffer(), [['🎀 Menu', '/menu']], m, {
             fileLength: fsizedoc,
             seconds: fsizedoc,
-            jpegThumbnail: Buffer.alloc(0), contextInfo: {
+            jpegThumbnail: await conn.resize(pp, 300, 150), contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     body: 'Size: ' + video.fileSizeH,

@@ -1,4 +1,5 @@
 import fetch from 'node-fetch'
+import { asmaulhusna } from '@bochilteam/scraper'
 
 let toM = a => '@' + a.split('@')[0]
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
@@ -116,19 +117,15 @@ let res = await fetch(`https://yog-apikey.herokuapp.com/api/cersex?apikey=YogGan
 }
 
 if (command == 'asmaulhusna') {
-let f = await fetch(`https://yog-apikey.herokuapp.com/api/muslim/asmaulhusna?apikey=YogGanz`)
-let xx = await f.json()
-let v = xx.result
-let teks = v.map(v => {
-return `
-*Nomor:* ${v.number}
-  *Latin:* ${v.latin}
-  *Arb:* ${v.arab}
-  *Indonesia:* ${v.translate_id}
-  *Inggris:* ${v.translate_en}
-      `.trim()
-  }).filter(v => v).join('\n\n▣═━–〈 *SEARCH* 〉–━═▣\n\n')
-  //m.reply(teks)
+let xf = await asmaulhusna()
+let { index, latin, arabic, translation_id, translation_en } = xf
+let teks = `
+  ${index}
+  ${latin}
+  ${arabic}
+  ${translation_id}
+  ${translation_en}
+`
   await conn.sendButton(m.chat, teks, wm, null, [
                 ['Search!', `${usedPrefix + command}`]
             ], m, { quoted: fakes })

@@ -1,12 +1,26 @@
-import { dare } from '@bochilteam/scraper'
+import { dare, truth, bucin } from '@bochilteam/scraper'
 
-let handler = async (m, { conn, usedPrefix }) => conn.sendButton(m.chat, await dare(), author, [
+let handler = async function (m, { conn, text, command, usedPrefix }) {
+if (command == 'dare') {
+await conn.sendButton(m.chat, await dare(), author, [
     ['Dare', `${usedPrefix}dare`], 
     ['Truth', `${usedPrefix}truth`]
 ], m)
-
-handler.help = ['dare']
+}
+if (command == 'truth') {
+await conn.sendButton(m.chat, await truth(), author, [
+    ['Dare', `${usedPrefix}dare`], 
+    ['Truth', `${usedPrefix}truth`]
+], m)
+}
+if (command == 'bucin') {
+await conn.sendButton(m.chat, await bucin(), author, [
+    ['Dare', `${usedPrefix}dare`], 
+    ['Truth', `${usedPrefix}truth`]
+], m)
+}
+}
+handler.command = handler.help = ['dare', 'truth', 'bucin']
 handler.tags = ['quotes', 'fun']
-handler.command = /^(dare)$/i
 
 export default handler
