@@ -134,7 +134,7 @@ async function connectionUpdate(update) {
     global.timestamp.connect = new Date
   }
   if (global.db.data == null) loadDatabase()
-  if (connection == 'open') { console.log(chalk.yellow('Successfully ' + author)) }
+  if (connection == 'open') { console.log(chalk.yellow('Made by ' + author)) }
 }
 
 process.on('uncaughtException', console.error)
