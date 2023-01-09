@@ -88,6 +88,10 @@
 | **FFMPEG** |[here](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest) |
 | **IMAGEMAGICK** | [here](https://github.com/DuckyTeam/heroku-buildpack-imagemagick) |
 
+  ## FORCE CMD INSTALL
+  ```bash
+  $  npm install --legacy-peer-deps
+  ```
 ## TERMUX USER
 ```bash
 $ pkg upgrade && pkg update
